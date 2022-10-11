@@ -4,15 +4,18 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">修改部门</h3>
+                <h3 class="panel-title">新建用户</h3>
             </div>
             <div class="panel-body">
                 <form method="post">
-                        {% csrf_token %}
+                    {% csrf_token %}
+                    {% for field in form %}
                     <div class="form-group">
-                        <label>标题</label>
-                        <input type="text" class="form-control" placeholder="标题" name="title" value="{{ row_object.title }}">
+                        <label>{{ field.label }}</label>
+                        {{ field }}
+                        <!--<input type="text" class="form-control" placeholder="姓名" name="user">-->
                     </div>
+                    {% endfor %}
 
                     <button type="submit" class="btn btn-primary">提 交</button>
                 </form>
@@ -20,4 +23,5 @@
         </div>
 
     </div>
+
 {% endblock %}
